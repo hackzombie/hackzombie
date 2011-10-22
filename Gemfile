@@ -32,8 +32,6 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
-gem 'ricodigo-capistrano-recipes'
-
 # To use debugger
 # gem 'ruby-debug'
 
