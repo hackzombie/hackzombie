@@ -8,7 +8,7 @@ ssh_options[:forward_agent] = true
 
 set :branch, "master"
 
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 
 set :git_enable_submodules, 1
 
