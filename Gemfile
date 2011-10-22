@@ -27,10 +27,12 @@ gem 'rack-cache', '1.0.3'
 
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+
+gem 'ricodigo-capistrano-recipes'
 
 # To use debugger
 # gem 'ruby-debug'
