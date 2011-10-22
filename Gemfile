@@ -25,6 +25,8 @@ gem 'sqlite3-ruby', :require =>'sqlite3'
 gem 'rake', '0.9.2'
 gem 'rack-cache', '1.0.3'
 
+gem "rspec-rails"
+
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -34,8 +36,6 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
-
-gem 'psych'
 
 gem 'rest-client'
 gem 'json'
