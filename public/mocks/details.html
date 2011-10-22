@@ -1,10 +1,15 @@
 <!DOCTYPE html> 
 <html> 
-	<head> 
+<head> 
 	<title>Page Title</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+</head> 
 <body>
+
+<div id="detailspage" data-role="page" data-add-back-btn="true">
   <style>
     .hero {
       float: right;
@@ -128,33 +133,6 @@
       width: 250px;
     }
   </style>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-  <script type="application/javascript" src="/js/iscroll.js"></script>
-  <script type="text/javascript">
-    var profileScroll;
-    var updatesScroll;
-    function loaded() {
-      profileScroll = new iScroll('profilescrollwrapper', {
-          snap: 'li',
-          momentum: false,
-          hScrollbar: false,
-          vScrollbar: false,
-          vScroll: false,
-      });
-      updatesScroll = new iScroll('updatesscrollwrapper', {
-          snap: 'li',
-          momentum: false,
-          hScrollbar: false,
-          vScrollbar: false,
-          vScroll: false,
-      });
-    }
-    document.addEventListener('DOMContentLoaded', loaded, false);
-  </script>
-</head> 
-
-<div data-role="page" data-add-back-btn="true">
 
 	<div data-role="header">
     <h1>Details</h1>
@@ -277,6 +255,29 @@
 
 	<div data-role="footer">
 	</div><!-- /footer -->
+
+  <script type="application/javascript" src="/js/iscroll.js"></script>
+  <script type="text/javascript">
+    var profileScroll;
+    var updatesScroll;
+    function loaded() {
+      profileScroll = new iScroll('profilescrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+      updatesScroll = new iScroll('updatesscrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+    }
+    $('#detailspage').live('pageshow', loaded);
+  </script>
 </div><!-- /page -->
 
 </body>
