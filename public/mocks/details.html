@@ -1,0 +1,291 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Page Title</title> 
+	
+  <!-- TODO(scotty): uncomment this
+     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=320, initial-scale=1">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+  <style>
+    .hero {
+      float: right;
+    }
+
+    .section > div, .updates li {
+      border: 0px solid black;
+    }
+    
+    .votes {
+      border: 1px solid black;
+    }
+
+    .section {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .right {
+      margin-left: 80px;
+    }
+
+    .left {
+      width: 75px;
+      float: left;
+    }
+
+    body {
+        width: 320px;
+        max-width: 320px;
+    }
+
+    .timecontainer {
+      float: right;
+    }
+
+    .clock {
+      width: 10px;
+      height: 10px;
+      background: blue;
+    }
+
+    .locationicon {
+      width: 10px;
+      height: 10px;
+      background: blue;
+    }
+
+    .votes {
+      width: 30px;
+      height: 30px;
+    }
+
+    .iosicon {
+      margin-top: 15px;
+      width: 30px;
+      height: 30px;
+      background: blue;
+    }
+
+    .sectionicon {
+      width: 30px;
+      height: 30px;
+      background: blue;
+    }
+
+    .profilelist {
+      list-style: none;
+    }
+
+    .profile {
+      display: inline;
+    }
+
+    .profilephoto {
+      margin-top:20px;
+      width: 50px;
+      height: 50px;
+      background: blue;
+    }
+
+    .profilelabel {
+      font-size: 9pt;
+    }
+
+    .scrollwrapper {
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100px;
+      overflow:auto;
+      background: #ccc;
+      border: 1px solid #aaa;
+    }
+
+    .scroller {
+      width:700px;
+      float:left;
+      padding:0;
+      margin-right:20px;
+    }
+
+    .scroller ul {
+      list-style:none;
+      display:block;
+      float:left;
+      width:100%;
+      height:100%;
+      padding:0;
+      margin:0;
+    }
+
+    .scroller li {
+      display:block;
+      float:left;
+      height: 100px;
+      text-align:center;
+    }
+
+    .scroller .profiles li {
+      width: 60px;
+    }
+
+    .updates li {
+      border-right: 1px solid #aaa;
+      width: 250px;
+    }
+  </style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+  <script type="application/javascript" src="/js/iscroll.js"></script>
+  <script type="text/javascript">
+    var profileScroll;
+    var updatesScroll;
+    function loaded() {
+      profileScroll = new iScroll('profilescrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+      updatesScroll = new iScroll('updatesscrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+    }
+    document.addEventListener('DOMContentLoaded', loaded, false);
+  </script>
+</head> 
+<body style="width: 320px;">
+
+<div data-role="page">
+
+	<div data-role="header">
+	</div><!-- /header -->
+
+	<div data-role="content">	
+    <div class="section">
+      <div class="left">
+        <img src="../images/shaka.png">
+        <div class="votes">
+          8
+        </div>
+        <img class="iosicon"/>
+      </div>
+      <div class="right">
+        <div class="timecontainer">
+          <img class="clock"/>
+          3d
+        </div>
+        <h3>Namerick</h3>
+        <div class="location"><img class="locationicon"/>BeMyApp</div>
+        <iframe class="hero" width="150" height="112" src="http://www.youtube.com/embed/nJdvpvkkWR4?rel=0&controls=0&showinfo=0&wmode=opaque" frameborder="0" allowfullscreen></iframe>
+				<p>Finally an iPhone app that improves your memory of people's names using repetition and mnemonics modeled from studies of the human memory.</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <div id="profilescrollwrapper" class="scrollwrapper">
+          <div class="scroller">
+            <ul class="profiles">
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <div id="updatesscrollwrapper" class="scrollwrapper">
+          <div class="scroller">
+            <ul class="updates">
+              <li>
+                <p>We just submitted that app to the store - we're just waiting on Apple to review it!</p>
+              </li>
+              <li>
+                <p>We're overhauling the UI based on great feedback from our beta testers.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <textarea></textarea>
+        <input type="button" value="Comment">
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <p>This is really great! So excited to see you guys launch!</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <p>This is really great! So excited to see you guys launch!</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <p>This is really great! So excited to see you guys launch!</p>
+      </div>
+    </div>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
