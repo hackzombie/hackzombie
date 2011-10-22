@@ -37,6 +37,8 @@ gem 'ricodigo-capistrano-recipes'
 # To use debugger
 # gem 'ruby-debug'
 
+gem 'psych'.
+
 gem 'rest-client'
 gem 'json'
 #gem 'omniauth'
