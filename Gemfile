@@ -28,3 +28,9 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
+gem 'rest-client'
+gem 'json'
+#gem 'omniauth'
+gem 'devise', '~> 1.4.7'
+gem 'omniauth', '0.3.0'
+
