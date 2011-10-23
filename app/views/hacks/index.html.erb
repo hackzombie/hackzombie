@@ -1,23 +1,51 @@
-<h1>Listing hacks</h1>
+<div data-role="page" data-add-back-btn="true">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <style>
+    .votescontainer {
+      float: right;
+    }
 
-<% @hacks.each do |hack| %>
-  <tr>
-    <td><%= hack.name %></td>
-    <td><%= link_to 'Show', hack %></td>
-    <td><%= link_to 'Edit', edit_hack_path(hack) %></td>
-    <td><%= link_to 'Destroy', hack, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+    .votes {
+      border: 1px solid black;
+    }
 
-<br />
+    .ui-li-desc {
+       white-space: normal;
+    }
+  </style>
 
-<%= link_to 'New Hack', new_hack_path %>
+  <div data-role="header" data-position="inline">
+    <h1>Popular</h1>
+    <a href="post.html" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
+  </div>
+
+	<div data-role="content">	
+    <ul data-role="listview">
+      <% @hacks.each do |hack| %>
+      <li><a href="<%= url_for hack %>">
+        <img src="<%= hack.media_url %>" />
+        <div class="votescontainer">
+          <img class="shaka" src="../images/shaka.png" />
+          <div class=votes>
+            <%= hack.votes %>
+          </div>
+        </div>
+				<h3><%= hack.name %></h3>
+        <p><%= hack.description %></p>
+        <p>
+        <i>
+        <% hack.platforms.each do |platform| %>
+          <%= platform.name %>
+        <% end %>
+        @ <%= hack.event.name %>
+        </i>
+        </p>
+			</a></li>
+      <% end %>
+    </ul>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	</div><!-- /footer -->
+</div><!-- /page -->
+
