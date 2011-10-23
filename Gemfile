@@ -25,14 +25,14 @@ gem 'sqlite3-ruby', :require =>'sqlite3'
 gem 'rake', '0.9.2'
 gem 'rack-cache', '1.0.3'
 
+gem "rspec-rails"
+
 
 # Use unicorn as the web server
 gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
-
-gem 'ricodigo-capistrano-recipes'
 
 # To use debugger
 # gem 'ruby-debug'
