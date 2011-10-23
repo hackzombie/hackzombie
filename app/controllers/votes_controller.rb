@@ -53,6 +53,7 @@ class VotesController < ApplicationController
       else
         @vote.hack.votes += 1 
       end
+      @vote.hack.save
     else
       logger.info "already voted!!!"
     end
