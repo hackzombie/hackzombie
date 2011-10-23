@@ -15,10 +15,31 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+	<div class="field">
+    <%= f.label :media_url %><br />
+    <%= f.text_field :media_url %>
+  </div>
+	<div class="field">
+    <%= f.label :info_url %><br />
+    <%= f.text_field :info_url %>
+  </div>
+ <div class="field">
+    <%= f.label :status %><br />
+    <%#= f.text_field :platform %>
+	<%= f.select :status_id, Status.all.collect{|s|[s.name.titlecase, s.id ]}%>
+  </div>
 	<div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </div>
+	<% for platform in Platform.find(:all) %>
+	<div>
+	  <%= check_box_tag "hack[platform_ids][]", platform.id, @hack.platforms.include?(platform) %>
+	  <%= platform.name %>
+	</div>
+	<% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
