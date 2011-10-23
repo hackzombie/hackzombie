@@ -13,11 +13,10 @@
 
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
+    <%=current_user.id%>
   <div class="field">
-    <%= f.label :hack %><br />
-    <%= f.text_field :hack %>
+    <%= f.label :hack_id %><br />
+    <%= f.text_field :hack_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

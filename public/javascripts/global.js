@@ -4,3 +4,9 @@ $(document).bind("mobileinit", function(){
     ajaxEnabled: false,
   });
 });
+
+$(function() {
+    $('.vote-link').bind("ajax:success", function(evt, data, status, xhr){
+        $(this).parent(".votescontainer").html(data); // insert content
+    });
+});

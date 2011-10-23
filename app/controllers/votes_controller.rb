@@ -41,13 +41,39 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new(params[:vote])
-
+    @vote.user = current_user
+    votedAlreadyVoted = Vote.find_by_user_id(current_user.id)
+    dovote = true
+    if votedAlreadyVoted.nil?
+      logger.info "not already voted"
+      dovote = false 
+      if @vote.hack.votes.nil?
+        @vote.hack.votes = 1 
+      else
+        @vote.hack.votes += 1 
+      end
+    else
+      logger.info "already voted!!!"
+    end
     respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, :notice => 'Vote was successfully created.' }
+      if dovote || @vote.save
+        format.html do |format| 
+          if request.xhr?
+            render :partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
+          else
+            redirect_to @vote, :notice => 'Vote was successfully created.'
+          end
+        end
+        
         format.json { render :json => @vote, :status => :created, :location => @vote }
       else
-        format.html { render :action => "new" }
+        format.html do |format| 
+          if request.xhr?
+            render :partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
+          else
+            render :action => "new"
+          end
+        end
         format.json { render :json => @vote.errors, :status => :unprocessable_entity }
       end
     end

@@ -22,25 +22,18 @@
           <% @hacks.each do |hack| %>
           <li><a href="<%= url_for hack %>">
             <img src="<%= hack.media_url %>" />
-            <div class="votescontainer">
-                <%= link_to image_tag("shaka.png"), {:controller=>"votes", :action => 'create', :hack=>hack }, :remote=> true, :class=>"votes" %>
-            
-              <img class="shaka" src="/images/shaka.png" />
-              <div class="votes">
-                <%= hack.votes %>
-              </div>
-            </div>
-    				<h3><%= hack.name %></h3>
+            <%= render 'votes/vote', :hack => hack %> 
+            <h3><%= hack.name %></h3>
             <p><%= hack.description %></p>
             <p>
             <i>
-            <% hack.platforms.each do |platform| %>
-              <%= platform.name %>
-            <% end %>
-            @ <%= hack.event.name %>
+                <% hack.platforms.each do |platform| %>
+                  <%= platform.name %>
+                <% end %>
+                @ <%= hack.event.name unless hack.event.nil?%>
             </i>
             </p>
-    			</a></li>
+            </a></li>
           <% end %>
         </ul>
 	</div><!-- /content -->

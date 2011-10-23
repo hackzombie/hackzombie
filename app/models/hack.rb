@@ -24,9 +24,12 @@ class Hack < ActiveRecord::Base
       # So this may not work:
       hackplatformrelation.destroy unless platform_ids.include? hackplatformrelation.platform_id
     end
-    platform_ids.each do |platform_id|
-      self.hackplatformrelations.create(:platform_id => platform_id) 
-    end
+    self.platforms = Platform.find(platform_ids)
+  end
+
+  def team_emails
+    # TODO(scotty): Implement
+    ["scotty@scottyallen.com", "fleetvanjeremy@gmail.com"]
   end
   
 end

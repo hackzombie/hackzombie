@@ -6,12 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
   
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
 	<script type="application/javascript" src="/javascripts/iscroll.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="/javascripts/global.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 </head>
@@ -22,8 +21,8 @@
       <%= yield :header %>
     </div>
 
-
     <%= yield %>
+
     <div data-role="footer">
 	     <%= yield :footer %>
 	     <div id="user_nav">
