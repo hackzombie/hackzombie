@@ -136,8 +136,10 @@ Devise.setup do |config|
   
   #config.omniauth :facebook, "APP_ID", "APP_SECRET"
 #  config.omniauth :facebook, "147749211905466", "b682557c3bc08512d09ebc4b848d8d93"
-  config.omniauth :facebook, "125774377529637", "a26443b2b8cd9ebb0a01daf9b4e78c15"
-  config.omniauth :twitter, "fno1nY6Vx8G80mNFXKPukg", "UnTQrcu2nPG5bqTS3KYdRPkQ2wKgSZz4uBC1RRpRD0"
+  #config.omniauth :facebook, "125774377529637", "a26443b2b8cd9ebb0a01daf9b4e78c15"
+  config.omniauth :facebook, ENV['facebookkey'], ENV['facebooksecret']
+  
+  #config.omniauth :twitter, "fno1nY6Vx8G80mNFXKPukg", "UnTQrcu2nPG5bqTS3KYdRPkQ2wKgSZz4uBC1RRpRD0"
   config.omniauth :google_apps, OpenID::Store::Filesystem.new('/tmp'), :domain => 'gmail.com'
   #
   # config.warden do |manager|

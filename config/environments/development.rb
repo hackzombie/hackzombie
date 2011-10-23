@@ -14,7 +14,7 @@ Hackzombie::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -27,4 +27,8 @@ Hackzombie::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #config.omniauth :facebook, "125774377529637", "a26443b2b8cd9ebb0a01daf9b4e78c15"
+  ENV['facebookkey'] = "125774377529637"
+  ENV['facebooksecret'] = "a26443b2b8cd9ebb0a01daf9b4e78c15"
 end

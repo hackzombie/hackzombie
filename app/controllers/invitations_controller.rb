@@ -31,6 +31,54 @@ class InvitationsController < ApplicationController
       format.json { render :json => @invitation }
     end
   end
+  
+  def collectionform
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+  
+  def sendinvites
+    logger.info "sendinvites!!!!"
+    allemailaddresses = params[:emailadddresses]
+    hack_id = params[:hack_id]
+    parsed_emailaddresses = parse_users_by_emailaddress(allemailaddresses)
+    hack = Hack.find(hack_id)
+    parsed_emailaddresses.each do|emailaddress|
+      invitation = Invitation.new
+      invitation.emailaddress = emailaddress
+      o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten;  
+      code  =  (0..50).map{ o[rand(o.length)]  }.join;
+      invitation.code = code
+      invitation.hack = hack
+      invitation.save
+      Notifier.invite_for_hack(emailaddress, hack.name, code).deliver
+    end
+    respond_to do |format|
+      format.html { redirect_to invitations_url }
+      format.json { head :ok }
+    end
+  end
+  
+  def parse_users_by_emailaddress(allemailaddresses)
+    logger.info "parse_users_by_emailaddress, allemailaddresses " + allemailaddresses unless allemailaddresses.nil?
+    newusersemailaddresses = []
+    if !allemailaddresses.nil? && allemailaddresses.length > 0
+      emailaddresses = allemailaddresses.split(',')
+      emailaddresses.each do|emailaddress|
+        trimmed_email = emailaddress.strip
+        if !trimmed_email.nil? && trimmed_email.length > 0
+          newusersemailaddresses << trimmed_email
+        end
+      end
+    end
+    newusersemailaddresses
+  end
+  
+  def accept
+    invitecode = params[:invitecode]
+    logger.info "invitecode: " + invitecode
+  end
 
   # GET /invitations/1/edit
   def edit

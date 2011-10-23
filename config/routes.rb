@@ -84,6 +84,8 @@ Hackzombie::Application.routes.draw do
   resource :facebook_account
   match '/callback/facebook/:id' => "facebook_accounts#callback", :as => :facebook_callback
   match 'testpost' => "home#testpost", :as => :testpost
-  
+  match 'inviteviaemail' => "invitations#collectionform", :as => :inviteviaemail
+  match 'sendinvites' => "invitations#sendinvites", :as => :sendinvites
+  match 'accepthackinvite(/:invitecode)' => 'invitations#accept', :as => :accepthackinvite
   
 end
