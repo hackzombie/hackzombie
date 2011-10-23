@@ -1,10 +1,261 @@
-<p id="notice"><%= notice %></p>
+<div id="detailspage" data-role="page" data-add-back-btn="true">
+  <style>
+    .hero {
+      float: right;
+    }
 
-<p>
-  <b>Name:</b>
-  <%= @hack.name %>
-</p>
+    .section > div, .updates li {
+      border: 0px solid black;
+    }
+    
+    .votes {
+      border: 1px solid black;
+    }
 
+    .section {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-<%= link_to 'Edit', edit_hack_path(@hack) %> |
-<%= link_to 'Back', hacks_path %>
+    .right {
+      margin-left: 80px;
+    }
+
+    .left {
+      width: 75px;
+      float: left;
+    }
+
+    .timecontainer {
+      float: right;
+    }
+
+    .clock {
+      width: 10px;
+      height: 10px;
+      background: blue;
+    }
+
+    .locationicon {
+      width: 10px;
+      height: 10px;
+      background: blue;
+    }
+
+    .votes {
+      width: 30px;
+      height: 30px;
+    }
+
+    .iosicon {
+      margin-top: 15px;
+      width: 30px;
+      height: 30px;
+      background: blue;
+    }
+
+    .sectionicon {
+      width: 30px;
+      height: 30px;
+      background: blue;
+    }
+
+    .profilelist {
+      list-style: none;
+    }
+
+    .profile {
+      display: inline;
+    }
+
+    .profilephoto {
+      margin-top:20px;
+      width: 50px;
+      height: 50px;
+      background: blue;
+    }
+
+    .profilelabel {
+      font-size: 9pt;
+    }
+
+    .scrollwrapper {
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100px;
+      overflow:auto;
+      background: #ccc;
+      border: 1px solid #aaa;
+    }
+
+    .scroller {
+      width:700px;
+      float:left;
+      padding:0;
+      margin-right:20px;
+    }
+
+    .scroller ul {
+      list-style:none;
+      display:block;
+      float:left;
+      width:100%;
+      height:100%;
+      padding:0;
+      margin:0;
+    }
+
+    .scroller li {
+      display:block;
+      float:left;
+      height: 100px;
+      text-align:center;
+    }
+
+    .scroller .profiles li {
+      width: 60px;
+    }
+
+    .updates li {
+      border-right: 1px solid #aaa;
+      width: 250px;
+    }
+  </style>
+
+	<div data-role="header">
+    <h1>Details</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+    <div class="section">
+      <div class="left">
+        <img src="../images/shaka.png">
+        <div class="votes">
+          <%= @hack.votes %>
+        </div>
+        <% @hack.platforms.each do |platform| %>
+          <img class="iosicon"/>
+        <% end %>
+      </div>
+      <div class="right">
+        <div class="timecontainer">
+          <img class="clock"/>
+          <%= @hack.short_age %>
+        </div>
+        <h3>Namerick</h3>
+        <div class="location"><img class="locationicon"/><%= @hack.event.name %></div>
+        <% if @hack.media_url.include? "youtube.com" %>
+          <iframe class="hero" width="150" height="112" src="<%= @hack.media_url %>" frameborder="0" allowfullscreen></iframe>
+        <% else %>
+          <img class="hero" src="<%= @hack.media_url %>" frameborder="0"/>
+        <% end %>
+        <p><%= @hack.description %></p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <div id="profilescrollwrapper" class="scrollwrapper">
+          <div class="scroller">
+            <!-- TODO(scotty): hook this up to the db once the team models are done -->
+            <ul class="profiles">
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+              <li>
+                <img class="profilephoto"/>
+                <div class="profilelabel">Developer</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <div id="updatesscrollwrapper" class="scrollwrapper">
+          <div class="scroller">
+            <ul class="updates">
+              <% @hack.hackdescriptionupdates.each do |update| %>
+              <li>
+                <p><%= update.description %></p>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <textarea></textarea>
+        <input type="button" value="Comment">
+      </div>
+    </div>
+    <% @hack.comments.each do |comment| %>
+    <div class="section">
+      <div class="left">
+        <img class="sectionicon"/>
+      </div>
+      <div class="right">
+        <p><%= comment.comment %></p>
+      </div>
+    </div>
+    <% end %>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+	</div><!-- /footer -->
+
+  <script type="text/javascript">
+    var profileScroll;
+    var updatesScroll;
+    function loaded() {
+      profileScroll = new iScroll('profilescrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+      updatesScroll = new iScroll('updatesscrollwrapper', {
+          snap: 'li',
+          momentum: false,
+          hScrollbar: false,
+          vScrollbar: false,
+          vScroll: false,
+      });
+    }
+    $('#detailspage').live('pageshow', loaded);
+  </script>
+</div><!-- /page -->

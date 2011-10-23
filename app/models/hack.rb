@@ -7,6 +7,15 @@ class Hack < ActiveRecord::Base
   
   has_many :hackplatformrelations
   has_many :platforms, :through => :hackplatformrelations
+
+  has_many :hackdescriptionupdates
+
+  has_many :comments
+
+  def short_age
+    # TODO(scotty): Implement this.
+    "5d"
+  end
   
   def platform_ids=(platform_ids)
     logger.info "platform_ids : " + platform_ids.to_s
