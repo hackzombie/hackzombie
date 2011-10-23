@@ -80,4 +80,5 @@ class HacksController < ApplicationController
       format.json { head :ok }
     end
   end
+  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023012232) do
+ActiveRecord::Schema.define(:version => 20111023020022) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -93,16 +93,6 @@ ActiveRecord::Schema.define(:version => 20111023012232) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "statushackrelations", :force => true do |t|
-    t.integer  "status_id"
-    t.integer  "hack_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "statushackrelations", ["hack_id"], :name => "index_statushackrelations_on_hack_id"
-  add_index "statushackrelations", ["status_id"], :name => "index_statushackrelations_on_status_id"
 
   create_table "user_tokens", :force => true do |t|
     t.integer  "user_id"
