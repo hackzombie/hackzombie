@@ -57,4 +57,7 @@ Hackzombie::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  ENV['facebookkey'] = "130759143696390"
+  ENV['facebooksecret'] = "d70ac31743a6d1c8f33cfb22ef235312"
 end

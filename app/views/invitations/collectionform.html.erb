@@ -1,0 +1,6 @@
+<%= form_tag('/sendinvites') do -%>
+	hack_id: <%= text_field_tag 'hack_id'%>
+	Email addresses (comma separated)<br /><%= text_area_tag 'emailadddresses'%>
+
+  <div><%= submit_tag 'Send invites' %></div>
+<% end -%>
