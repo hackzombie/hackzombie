@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023000826) do
+ActiveRecord::Schema.define(:version => 20111023011745) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20111023000826) do
   end
 
   add_index "hackdescriptionupdates", ["hack_id"], :name => "index_hackdescriptions_on_hack_id"
+
+  create_table "hackplatformrelations", :force => true do |t|
+    t.integer  "platform_id"
+    t.integer  "hack_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hackplatformrelations", ["hack_id"], :name => "index_hackplatformrelations_on_hack_id"
+  add_index "hackplatformrelations", ["platform_id"], :name => "index_hackplatformrelations_on_platform_id"
 
   create_table "hacks", :force => true do |t|
     t.string   "name"

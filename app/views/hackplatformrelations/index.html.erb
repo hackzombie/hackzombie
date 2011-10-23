@@ -1,0 +1,25 @@
+<h1>Listing hackplatformrelations</h1>
+
+<table>
+  <tr>
+    <th>Platform</th>
+    <th>Hack</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hackplatformrelations.each do |hackplatformrelation| %>
+  <tr>
+    <td><%= hackplatformrelation.platform %></td>
+    <td><%= hackplatformrelation.hack %></td>
+    <td><%= link_to 'Show', hackplatformrelation %></td>
+    <td><%= link_to 'Edit', edit_hackplatformrelation_path(hackplatformrelation) %></td>
+    <td><%= link_to 'Destroy', hackplatformrelation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hackplatformrelation', new_hackplatformrelation_path %>

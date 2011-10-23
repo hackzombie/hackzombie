@@ -1,0 +1,25 @@
+<%= form_for(@hackplatformrelation) do |f| %>
+  <% if @hackplatformrelation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hackplatformrelation.errors.count, "error") %> prohibited this hackplatformrelation from being saved:</h2>
+
+      <ul>
+      <% @hackplatformrelation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :platform %><br />
+    <%= f.text_field :platform %>
+  </div>
+  <div class="field">
+    <%= f.label :hack %><br />
+    <%= f.text_field :hack %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Hackzombie::Application.routes.draw do
+  resources :hackplatformrelations
+
   resources :hackdescriptionupdates
 
   resources :statushackrelations

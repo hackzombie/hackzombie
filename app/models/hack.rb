@@ -4,4 +4,7 @@ class Hack < ActiveRecord::Base
   
   has_many :statushackrelations
   has_many :statuses, :through => :statushackrelations 
+  
+  has_many :hackplatformrelations
+  has_many :platforms, :through => :hackplatformrelations
 end
