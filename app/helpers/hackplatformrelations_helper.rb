@@ -1,0 +1,2 @@
+module HackplatformrelationsHelper
+end

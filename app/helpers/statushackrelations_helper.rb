@@ -1,0 +1,2 @@
+module StatushackrelationsHelper
+end

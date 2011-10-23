@@ -1,0 +1,2 @@
+module HackdescriptionsHelper
+end
