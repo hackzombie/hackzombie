@@ -18,21 +18,22 @@
 <body>
 <div id="page" data-role="page" data-add-back-btn="true">
     <div data-role="header" data-position="inline">
-      <h1>Popular</h1>
-      <a href="post.html" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
+      <h1><%= @page_title or 'HackYeah' %></h1>
+      <%= yield :header %>
     </div>
-	<div id="user_nav">
-	  <% if user_signed_in? %>
-	    Signed in as <%= current_user.email %>. Not you?
-	    <%= link_to "Sign out", destroy_user_session_path %>
-	  <% else %>
-	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-	  <% end %>
-	</div>
+
 
     <%= yield %>
     <div data-role="footer">
-	    
+	     <%= yield :footer %>
+	     <div id="user_nav">
+     	  <% if user_signed_in? %>
+     	    Signed in as <%= current_user.email %>. Not you?
+     	    <%= link_to "Sign out", destroy_user_session_path %>
+     	  <% else %>
+     	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+     	  <% end %>
+     	</div>
 	</div><!-- /footer -->
 </div>
 </body>
