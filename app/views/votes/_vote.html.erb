@@ -1,0 +1,6 @@
+<div id="hack_<%=hack.id %>_votes" class="votescontainer">
+  <%= link_to image_tag("../images/shaka.png"), {:controller=>"votes", :action => 'create', :vote=>{hack_id:hack}}, :method => :post, :remote=>true, :class => "vote-link"%>
+  <div class="hack_<%=hack.id %>_votes_count">
+    <%= hack.votes %>
+  </div>
+</div>
