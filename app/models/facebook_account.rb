@@ -8,7 +8,7 @@ class FacebookAccount < ActiveRecord::Base
 
   def authorize_url(callback_url = '')
     if self.oauth_authorize_url.blank?
-      self.oauth_authorize_url = "https://graph.facebook.com/oauth/authorize?client_id=#{FACEBOOK_CLIENT_ID}&redirect_uri=#{callback_url}&scope=offline_access,publish_stream"
+      self.oauth_authorize_url = "https://graph.facebook.com/oauth/authorize?display=touch&client_id=#{FACEBOOK_CLIENT_ID}&redirect_uri=#{callback_url}&scope=offline_access,publish_stream"
       self.save!
     end
     self.oauth_authorize_url
