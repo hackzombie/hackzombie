@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023011745) do
+ActiveRecord::Schema.define(:version => 20111023012232) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20111023011745) do
     t.string   "info_url"
     t.integer  "votes"
     t.integer  "status_id"
+    t.integer  "event_id"
   end
 
   create_table "invitations", :force => true do |t|
