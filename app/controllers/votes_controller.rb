@@ -42,7 +42,8 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(params[:vote])
     @vote.user = current_user
-    votedAlreadyVoted = Vote.find_by_user_id(current_user.id)
+    #votedAlreadyVoted = Vote.find_by_user_id(current_user.id)
+    votedAlreadyVoted = Vote.find_by_hack_and_user(@vote.hack.id, current_user.id)
     dovote = true
     if votedAlreadyVoted.nil?
       logger.info "not already voted"
