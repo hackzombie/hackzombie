@@ -4,8 +4,9 @@
   <style>
     .right {
       float: right;
-      padding: 15px;
+      padding: 5px;
       color: #878787;
+      clear:right;
     }
 
     .votescontainer {
@@ -22,7 +23,7 @@
 
     h3.ui-li-heading {
       color: #55bed5;
-      font-size: 30pt;
+      font-size: 18pt;
       margin: 0;
       padding: 0;
     }
@@ -32,11 +33,11 @@
     }
 
     p.ui-li-desc {
-      font-size: 14pt;
+      font-size: 12pt;
     }
 
     h4.ui-li-heading {
-      font-size: 12pt;
+      font-size: 10pt;
       color: #8b8b8b;
       padding: 0;
       margin-top: -8px;
@@ -55,6 +56,10 @@
       height: 77px;
       padding: 10px;
     }
+    
+    li {
+        min-height: 140px;
+    }
 
   </style>
 
@@ -62,13 +67,12 @@
         <ul data-role="listview">
           <% @hacks.each do |hack| %>
           <li data-icon="">
-            <div class="right">
-              <div>
-                <div class="clock"></div>
-                1d
+              <div class="right">    <div>
+                    <div class="clock"></div>
+                    1d
+                  </div>
+                  <%= render 'votes/vote', :hack => hack %> 
               </div>
-              <%= render 'votes/vote', :hack => hack %> 
-            </div>
             <a href="<%= url_for hack %>">
               <img src="<%= hack.media_url %>" />
               <h3><%= hack.name %></h3>
