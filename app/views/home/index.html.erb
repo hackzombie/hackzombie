@@ -24,7 +24,6 @@
   .scrollwrapper {
     position:relative;
     z-index:1;
-    width:100%;
     height:150px;
     overflow:auto;
   }
@@ -49,8 +48,8 @@
   .scroller li {
     display:block;
     float:left;
-    height: 150px;
-    margin-top: 10px;
+    height: 100px;
+    margin-top: 14px;
     text-align:center;
   }
 
@@ -59,22 +58,32 @@
     width: 250px;
   }
 
-  #updatesscrollwrapper {
-    background: url('/images/home-updates-container.png') no-repeat;
+  .updatesframe {
+    background: url('/images/home-updates-container-right.png') no-repeat top right,
+                url('/images/home-updates-container-left.png') no-repeat top left,
+                url('/images/home-updates-container-middle.png') repeat-x top left content-box;
     margin-left: 15px;
-    margin-right; 15px;
+    margin-right: 15px;
+    padding-left: 10px;
+    padding-right: 13px;
+    padding-right: 13px;
   }
-
 </style>
+
 <h3>Project's you've hackYeah'd...</h3>
 
-<div id="updatesscrollwrapper" class="scrollwrapper">
-  <div class="scroller">
-    <ul class="updates">
-      <li>
-        <p>Some description goes here</p>
-      </li>
-    </ul>
+<div class="updatesframe">
+  <div id="updatesscrollwrapper" class="scrollwrapper">
+    <div class="scroller">
+      <ul class="updates">
+        <li>
+          <p>Some description goes here</p>
+        </li>
+        <li>
+          <p>Some other description goes here</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -102,6 +111,7 @@
         vScrollbar: false,
         vScroll: false,
     });
+    console.log("loaded");
   }
   $('#page').live('pageshow', loaded);
 </script>
