@@ -1,5 +1,3 @@
-<div data-role="page" data-add-back-btn="true">
-
   <style>
     .votescontainer {
       float: right;
@@ -14,10 +12,7 @@
     }
   </style>
 
-  <div data-role="header" data-position="inline">
-    <h1>Popular</h1>
-    <a href="post.html" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
-  </div>
+
 
 	<div data-role="content">	
     <ul data-role="listview">
@@ -25,7 +20,9 @@
       <li><a href="<%= url_for hack %>">
         <img src="<%= hack.media_url %>" />
         <div class="votescontainer">
-          <img class="shaka" src="../images/shaka.png" />
+            <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete, :remote=>true, :class=>'delete_post' %>
+            
+          <img class="shaka" src="/images/shaka.png" />
           <div class=votes>
             <%= hack.votes %>
           </div>
@@ -44,8 +41,3 @@
       <% end %>
     </ul>
 	</div><!-- /content -->
-
-	<div data-role="footer">
-	</div><!-- /footer -->
-</div><!-- /page -->
-

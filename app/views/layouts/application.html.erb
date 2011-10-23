@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hackzombie</title>
+  <title><%= @page_title or 'HackYeah' %></title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
-  <script type="application/javascript" src="/js/iscroll.js"></script>
+  <script type="application/javascript" src="/javascripts/iscroll.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="/js/global.js"></script> 
+	<script type="text/javascript" src="/javascripts/global.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 </head>
 <body>
-	
+<div id="page" data-role="page" data-add-back-btn="true">
+    <div data-role="header" data-position="inline">
+      <h1>Popular</h1>
+      <a href="post.html" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
+    </div>
 	<div id="user_nav">
 	  <% if user_signed_in? %>
 	    Signed in as <%= current_user.email %>. Not you?
@@ -25,7 +30,10 @@
 	  <% end %>
 	</div>
 
-<%= yield %>
-
+    <%= yield %>
+    <div data-role="footer">
+	    
+	</div><!-- /footer -->
+</div>
 </body>
 </html>
