@@ -37,7 +37,7 @@
         <% hack.platforms.each do |platform| %>
           <%= platform.name %>
         <% end %>
-        @ <%= hack.event.name %>
+        @ <%= hack.event.name unless hack.event.nil?%>
         </i>
         </p>
 			</a></li>

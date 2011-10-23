@@ -47,10 +47,16 @@
       <div class="left">
         <img class="sectionicon"/>
       </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Where'd you build it?</b><br>
-        <%#= f.text_field :event, :placeholder => "Event name" %>
-      </div>
+			<div class="right">
+				<%
+				#kind of different as event_name is not a property on hack, but event is
+				%>
+			<%= field_set_tag do %>
+			 <b style="font-size: 9pt;">Where'd you build it?</b><br>
+			  <p><%= text_field_tag :event_name, if !@hack.event.nil? 
+				@hack.event.name 
+				end , :placeholder => "Event name"%></p>
+			<% end %>
     </div>
     <div class="section">
       <div class="left">

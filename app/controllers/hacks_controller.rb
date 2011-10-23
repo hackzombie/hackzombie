@@ -41,7 +41,18 @@ class HacksController < ApplicationController
   # POST /hacks.json
   def create
     @hack = Hack.new(params[:hack])
-
+    #logger.info "event_name: ======="
+    event_name = params[:event_name]
+    #logger.info "event_name: " + event_name unless event_name.nil?
+    event = Event.find_by_name_caseinsensitive(event_name)
+    if(event.nil?)
+      logger.info "event not found, lets's create new one "
+      event = Event.create()
+      event.name = event_name
+      event.eventdate = Time.new
+      event.save
+    end
+    @hack.event = event
     respond_to do |format|
       if @hack.save
         format.html { redirect_to @hack, :notice => 'Hack was successfully created.' }
