@@ -23,7 +23,7 @@
       <li><a href="<%= url_for hack %>">
         <img src="<%= hack.media_url %>" />
         <div class="votescontainer">
-            <%= link_to image_tag("shaka"), {:controller=>"votes", :action => 'create', :id=> , :vote=>true}, :remote=> true, :class=>"votes" %>
+            <%= link_to image_tag("shaka"), {:controller=>"votes", :action => 'create'}, :remote=> true, :class=>"votes" %>
             
           <img class="shaka" src="/images/shaka.png" />
           <div class="votes">
