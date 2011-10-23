@@ -1,4 +1,20 @@
 Hackzombie::Application.routes.draw do
+  resources :hackdescriptionupdates
+
+  resources :statushackrelations
+
+  resources :invitations
+
+  resources :votes
+
+  resources :comments
+
+  resources :platforms
+
+  resources :events
+
+  resources :statuses
+
   get "home/index"
 
   resources :hacks

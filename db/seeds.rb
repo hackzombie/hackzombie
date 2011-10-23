@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+Status.create(:name=>'idea')
+Status.create(:name=>'hacking')
+Status.create(:name=>'launched')
+Status.create(:name=>'backburner')
+Status.create(:name=>'adopt me?')
+Status.create(:name=>'fund me?')
+
+Platform.create(:name=>'iOS')
+Platform.create(:name=>'Android')
+Platform.create(:name=>'Mobile web')
+Platform.create(:name=>'Web')

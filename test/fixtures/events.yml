@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  eventdate: 2011-10-22 16:06:21
+
+two:
+  name: MyString
+  eventdate: 2011-10-22 16:06:21
