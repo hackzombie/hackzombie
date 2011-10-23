@@ -1,2 +1,107 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% content_for :header do %>
+    <a href="/hacks/new" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
+<% end %>
+<style>
+  .ui-listview {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin-left: 30px;
+    margin-bottom: 5px;
+    padding: 0;
+    font-family: Garamond, "Times New Roman", serif !important;
+    font-size: 18pt;
+  }
+
+  li, a.ui-link-inherit  {
+    font-size: 18pt;
+    color: #616161 !important;
+  }
+
+  .scrollwrapper {
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:150px;
+    overflow:auto;
+  }
+
+  .scroller {
+    width:700px;
+    float:left;
+    padding:0;
+    margin-right:20px;
+  }
+
+  .scroller ul {
+    list-style:none;
+    display:block;
+    float:left;
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+  }
+
+  .scroller li {
+    display:block;
+    float:left;
+    height: 150px;
+    margin-top: 10px;
+    text-align:center;
+  }
+
+  .updates li {
+    border-right: 1px solid #aaa;
+    width: 250px;
+  }
+
+  #updatesscrollwrapper {
+    background: url('/images/home-updates-container.png') no-repeat;
+    margin-left: 15px;
+    margin-right; 15px;
+  }
+
+</style>
+<h3>Project's you've hackYeah'd...</h3>
+
+<div id="updatesscrollwrapper" class="scrollwrapper">
+  <div class="scroller">
+    <ul class="updates">
+      <li>
+        <p>Some description goes here</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h3>Browse</h3>
+<ul data-role="listview" data-inset="true">
+  <li><a href="/hacks">Popular Now</a></li>
+  <li><a href="">Nearby Hacks</a></li>
+  <li><a href="">Most hackYeah'd</a></li>
+  <li><a href="">Hacks by Friends</a></li>
+</ul>
+
+<h3>Recent Searches</h3>
+<ul data-role="listview" data-inset="true">
+  <li><a href="">"Socialize"</a></li>
+</ul>
+
+<script type="text/javascript">
+  var profileScroll;
+  var updatesScroll;
+  function loaded() {
+    updatesScroll = new iScroll('updatesscrollwrapper', {
+        snap: 'li',
+        momentum: false,
+        hScrollbar: false,
+        vScrollbar: false,
+        vScroll: false,
+    });
+  }
+  $('#page').live('pageshow', loaded);
+</script>

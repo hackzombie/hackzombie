@@ -9,3 +9,15 @@
 //= require_tree .
 
 
+$(document).bind("mobileinit", function(){
+  $.extend(  $.mobile , {
+    pushStateEnabled: false,
+    ajaxEnabled: false,
+  });
+});
+
+$(function() {
+    $('.shakacounter-link').bind("ajax:success", function(evt, data, status, xhr){
+        $(this).html("<div class=\"shakacounter\">" + data + "</div>"); // insert content
+    });
+});

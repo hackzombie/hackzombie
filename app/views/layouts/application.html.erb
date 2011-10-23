@@ -5,7 +5,6 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-  <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
   
@@ -13,8 +12,18 @@
 	<script type="application/javascript" src="/javascripts/iscroll.js"></script>
 	<script type="text/javascript" src="/javascripts/global.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-
-  <style>
+	<style>
+	.shakacounter {
+      width: 61px;
+      height: 94px;
+      background: url('/images/shaka-counter.png') no-repeat;
+      display: inline-block;
+      padding-top: 6px;
+      text-align: center;
+      font-size: 20pt;
+      color: #d72606;
+    }
+    
     #page {
       background: url('/images/details-background.png') no-repeat;
       background-size: cover;
@@ -22,9 +31,10 @@
     }
 
     .ui-btn-up-c, .ui-btn-hover-c, .ui-btn-down-c {
-      font-family: Garamond, "Times New Roman", serif; !important
+      font-family: Garamond, "Times New Roman", serif !important;
     }
-  </style>
+    <%= yield :css %>
+    </style>
 </head>
 <body>
 <div id="page" data-role="page" data-add-back-btn="true">
