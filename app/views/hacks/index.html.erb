@@ -2,8 +2,14 @@
     <a href="post.html" data-icon="plus" data-iconpos="notext" class="ui-btn-right">Post Hack</a>
 <% end %>
   <style>
-    .votescontainer {
+    .right {
       float: right;
+      padding: 15px;
+      color: #878787;
+    }
+
+    .votescontainer {
+      margin-top: 10px;
     }
 
     .votes {
@@ -13,27 +19,71 @@
     .ui-li-desc {
        white-space: normal;
     }
+
+    h3.ui-li-heading {
+      color: #55bed5;
+      font-size: 30pt;
+      margin: 0;
+      padding: 0;
+    }
+
+    .ui-li .ui-icon {
+      display: none;
+    }
+
+    p.ui-li-desc {
+      font-size: 14pt;
+    }
+
+    h4.ui-li-heading {
+      font-size: 12pt;
+      color: #8b8b8b;
+      padding: 0;
+      margin-top: -8px;
+      margin-bottom: 8px;
+    }
+
+    .clock {
+      width: 10px;
+      height: 10px;
+      background: url('/images/clock-small.png');
+      display: inline-block;
+    }
+    
+    .ui-li-thumb {
+      width: 77px;
+      height: 77px;
+      padding: 10px;
+    }
+
   </style>
-
-
 
 	<div data-role="content">	
         <ul data-role="listview">
           <% @hacks.each do |hack| %>
-          <li><a href="<%= url_for hack %>">
-            <img src="<%= hack.media_url %>" />
-            <%= render 'votes/vote', :hack => hack %> 
-            <h3><%= hack.name %></h3>
-            <p><%= hack.description %></p>
-            <p>
-            <i>
-                <% hack.platforms.each do |platform| %>
-                  <%= platform.name %>
-                <% end %>
-                @ <%= hack.event.name unless hack.event.nil?%>
-            </i>
-            </p>
-            </a></li>
+          <li data-icon="">
+            <div class="right">
+              <div>
+                <div class="clock"></div>
+                1d
+              </div>
+              <%= render 'votes/vote', :hack => hack %> 
+            </div>
+            <a href="<%= url_for hack %>">
+              <img src="<%= hack.media_url %>" />
+              <h3><%= hack.name %></h3>
+              <h4>Developing</h4>
+              <p><%= hack.description %></p>
+              <p>
+                <i>
+                  <% hack.platforms.each do |platform| %>
+                    <%= platform.name %>
+                  <% end %>
+                  hack at <%= hack.event.name unless hack.event.nil?%>
+                </i>
+              </p>
+            </a>
+          </li>
           <% end %>
         </ul>
 	</div><!-- /content -->

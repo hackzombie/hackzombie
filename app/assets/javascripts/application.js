@@ -17,7 +17,7 @@ $(document).bind("mobileinit", function(){
 });
 
 $(function() {
-    $('.vote-link').bind("ajax:success", function(evt, data, status, xhr){
-        $(this).parent(".shakacounter").html(data); // insert content
+    $('.shakacounter-link').bind("ajax:success", function(evt, data, status, xhr){
+        $(this).html("<div class=\"shakacounter\">" + data + "</div>"); // insert content
     });
 });

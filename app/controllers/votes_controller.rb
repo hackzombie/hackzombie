@@ -61,7 +61,7 @@ class VotesController < ApplicationController
       if dovote || @vote.save
         format.html do |format| 
           if request.xhr?
-            render :partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
+            render :json => @vote.hack.votes #:partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
           else
             redirect_to @vote, :notice => 'Vote was successfully created.'
           end
@@ -71,7 +71,7 @@ class VotesController < ApplicationController
       else
         format.html do |format| 
           if request.xhr?
-            render :partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
+            render :json => @vote.hack.votes   #:partial => "vote", :locals => { :vote => @vote, :hack => @vote.hack }
           else
             render :action => "new"
           end
