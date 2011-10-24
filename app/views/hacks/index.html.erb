@@ -61,9 +61,14 @@
         min-height: 140px;
     }
 
+    #ad {
+      margin: -15px;
+      width:100%;
+    }
   </style>
 
 	<div data-role="content">	
+        <img id=ad src="/images/ad.png"/>
         <ul data-role="listview">
           <% @hacks.each do |hack| %>
           <li data-icon="">
