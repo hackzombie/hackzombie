@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= @page_title or 'hackYeah' %></title>
-  <meta name="viewport" content="width=640, initial-scale=1, target-densitydpi=high-dpi"> 
+  <meta name="viewport" content="width=device-width, initial-scale=2, target-densitydpi=high-dpi"> 
 
   <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
@@ -48,7 +48,7 @@
 	     <%= yield :footer %>
 	     <div id="user_nav">
      	  <% if user_signed_in? %>
-     	    Signed in as <%= current_user.email %>. Not you?
+     	    User: <%= current_user.email %>. 
      	    <%= link_to "Sign out", destroy_user_session_path %>
      	  <% else %>
      	   <a href="/users/auth/facebook">Sign in with Facebook</a> 
