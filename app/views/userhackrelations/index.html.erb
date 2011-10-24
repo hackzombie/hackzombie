@@ -1,0 +1,27 @@
+<h1>Listing userhackrelations</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Hack</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @userhackrelations.each do |userhackrelation| %>
+  <tr>
+    <td><%= userhackrelation.user %></td>
+    <td><%= userhackrelation.hack %></td>
+    <td><%= userhackrelation.role %></td>
+    <td><%= link_to 'Show', userhackrelation %></td>
+    <td><%= link_to 'Edit', edit_userhackrelation_path(userhackrelation) %></td>
+    <td><%= link_to 'Destroy', userhackrelation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Userhackrelation', new_userhackrelation_path %>
