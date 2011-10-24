@@ -90,6 +90,7 @@ Hackzombie::Application.routes.draw do
   match 'sendinvites' => "invitations#sendinvites", :as => :sendinvites
   match 'accepthackinvite(/:invitecode)' => 'invitations#accept', :as => :accepthackinvite
   match 'invitationacceptance' => 'invitations#doacceptconfirmation', :as => :invitationacceptance
-  
+  match 'notloggedin' => "home#notloggedin", :as => :notloggedin
+
   
 end
