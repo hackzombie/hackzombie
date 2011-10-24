@@ -55,6 +55,9 @@ class HacksController < ApplicationController
     @hack.event = event
     respond_to do |format|
       if @hack.save
+        emailaddresses = params[:hack_team_emails]
+        logger.info "after new create hack, send team emails: " + emailaddresses
+        invite_team_members(emailaddresses, @hack)
         format.html { redirect_to @hack, :notice => 'Hack was successfully created.' }
         format.json { render :json => @hack, :status => :created, :location => @hack }
       else
@@ -62,6 +65,12 @@ class HacksController < ApplicationController
         format.json { render :json => @hack.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def invite_team_members(emailaddresses_text, hack)
+    logger.info "invite_team_members, text = " + emailaddresses_text
+    emailaddresses = InvitationsController.parse_users_by_emailaddress(emailaddresses_text)
+    InvitationsController.send_invites(emailaddresses, hack)
   end
 
   # PUT /hacks/1

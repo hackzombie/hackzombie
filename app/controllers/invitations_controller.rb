@@ -42,9 +42,17 @@ class InvitationsController < ApplicationController
     logger.info "sendinvites!!!!"
     allemailaddresses = params[:emailadddresses]
     hack_id = params[:hack_id]
-    parsed_emailaddresses = parse_users_by_emailaddress(allemailaddresses)
     hack = Hack.find(hack_id)
-    parsed_emailaddresses.each do|emailaddress|
+    emailaddresses = InvitationsController.parse_users_by_emailaddress(allemailaddresses)
+    InvitationsController.send_invites(emailaddresses, hack)
+    respond_to do |format|
+      format.html { redirect_to invitations_url }
+      format.json { head :ok }
+    end
+  end
+  
+  def self.send_invites(emailaddresses, hack)
+    emailaddresses.each do|emailaddress|
       invitation = Invitation.new
       invitation.emailaddress = emailaddress
       o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten;  
@@ -54,13 +62,9 @@ class InvitationsController < ApplicationController
       invitation.save
       Notifier.invite_for_hack(emailaddress, hack.name, code).deliver
     end
-    respond_to do |format|
-      format.html { redirect_to invitations_url }
-      format.json { head :ok }
-    end
   end
   
-  def parse_users_by_emailaddress(allemailaddresses)
+  def self.parse_users_by_emailaddress(allemailaddresses)
     logger.info "parse_users_by_emailaddress, allemailaddresses " + allemailaddresses unless allemailaddresses.nil?
     newusersemailaddresses = []
     if !allemailaddresses.nil? && allemailaddresses.length > 0
