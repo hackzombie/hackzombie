@@ -13,10 +13,12 @@
     float: left;
   }
 
-  .sectionicon {
-    width: 30px;
-    height: 30px;
-    background: blue;
+  div.ui-checkbox {
+    display: inline-block;
+  }
+
+  .platformicon {
+    padding-left: 30px;
   }
 </style>
   
@@ -35,22 +37,13 @@
 
 	<div data-role="content">	
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Project Name?</b><br>
-        <%= f.text_field :name, :placeholder => "Name" %>
-      </div>
+      <b style="font-size: 9pt;">Project Name?</b><br>
+      <%= f.text_field :name, :placeholder => "Name" %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-			<div class="right">
-				<%
-				#kind of different as event_name is not a property on hack, but event is
-				%>
+      <%
+      #kind of different as event_name is not a property on hack, but event is
+      %>
 			<%= field_set_tag do %>
 			 <b style="font-size: 9pt;">Where'd you build it?</b><br>
 			  <p><%= text_field_tag :event_name, if !@hack.event.nil? 
@@ -59,61 +52,41 @@
 			<% end %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">What is it? (0/140 chars)</b><br>
-        <%= f.text_area :description, :placeholder => "Description" %>
-      </div>
+      <b style="font-size: 9pt;">What is it? (0/140 chars)</b><br>
+      <%= f.text_area :description, :placeholder => "Description" %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Platform:</b><br>
-        <% for platform in Platform.find(:all) %>
-          <%= check_box_tag "hack[platform_ids][]", platform.id, @hack.platforms.include?(platform) %>
-          <img class="sectionicon"/>
+      <b style="font-size: 9pt;">Platform:</b><br>
+      <% for platform in Platform.find(:all) %>
+        <%= check_box_tag "hack[platform_ids][]", platform.id, @hack.platforms.include?(platform) %>
+        <% if platform.id == 1 %>
+          <img class="platformicon" src="/images/android-icon.png"/>
+        <% elsif platform.id == 2 %>
+          <img class="platformicon" src="/images/apple-icon.png"/>
+        <% elsif platform.id == 3 %>
+          <img class="platformicon" src="/images/phone-icon.png"/>
+        <% elsif platform.id == 4 %>
+          <img class="platformicon" src="/images/www-icon.png"/>
+        <% elsif platform.id == 5 %>
+          <img class="platformicon" src="/images/surprise-icon.png"/>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Homepage/additional info/download (optional):</b><br>
-        <%= f.text_field :info_url, :placeholder => "URL" %>
-      </div>
+      <b style="font-size: 9pt;">Homepage/additional info/download (optional):</b><br>
+      <%= f.text_field :info_url, :placeholder => "URL" %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Video or image (optional):</b><br>
-        <%= f.text_field :media_url, :placeholder => "URL" %>
-      </div>
+      <b style="font-size: 9pt;">Video or image (optional):</b><br>
+      <%= f.text_field :media_url, :placeholder => "URL" %>
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Team members:</b><br>
-        <!--<input type="text" id="hack_team_emails" name="hack[team_emails]" size="20" value="<%= @hack.team_emails.join(', ') %>" placeholder="Emails" />-->
-      </div>
+      <b style="font-size: 9pt;">Team members:</b><br>
+      <input type="text" id="hack_team_emails" name="" size="20" value="" placeholder="Emails" />
     </div>
     <div class="section">
-      <div class="left">
-        <img class="sectionicon"/>
-      </div>
-      <div class="right">
-        <b style="font-size: 9pt;">Status:</b><br>
-        <%= f.select :status_id, Status.all.collect{|s|[s.name.titlecase, s.id ]}%>
-      </div>
+      <b style="font-size: 9pt;">Status:</b><br>
+      <%= f.select :status_id, Status.all.collect{|s|[s.name.titlecase, s.id ]}%>
     </div>
 	</div><!-- /content -->
 
