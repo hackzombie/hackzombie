@@ -78,6 +78,44 @@ class InvitationsController < ApplicationController
   def accept
     invitecode = params[:invitecode]
     logger.info "invitecode: " + invitecode
+    @invitation = Invitation.find_by_code(invitecode)
+    if @invitation.nil?
+      logger.info "heu no invitation found..."
+    else
+      @invitationacceptance = Invitationacceptance.new
+      @invitationacceptance.id = @invitation.id
+      @invitationacceptance.hack = @invitation.hack
+      @invitationacceptance.code = @invitation.code
+    end
+  end
+  
+  
+  def doacceptconfirmation
+    logger.info "doacceptconfirmation!!"
+    @invitationacceptance = Invitationacceptance.new(params[:invitationacceptance])
+    invitation = Invitation.find_by_code(@invitationacceptance.code)
+    if invitation.nil?
+      logger.info "heu no invitation found..."
+    else
+      role = @invitationacceptance.role
+      userhackrelation = Userhackrelation.new
+      userhackrelation.user = current_user
+      @hack = invitation.hack
+      userhackrelation.hack = @hack 
+      userhackrelation.role = role
+      userhackrelation.save
+      #respond_to do |format|
+      #  logger.info "bla about to redirect"
+      #  format.html { redirect_to hacks_url, :notice => 'added user to hack.' }
+      #end
+      #respond_to do |format|
+      #  logger.info "bla about to redirec t -- -- we"
+      #  format.html { redirect_to hacks_url }
+      #  logger.info "bla about to redirec t -- -- aaa"
+      #  format.json { head :ok }
+      #  logger.info "bla about to redirec t -- -- bbb"
+      #end
+    end
   end
 
   # GET /invitations/1/edit

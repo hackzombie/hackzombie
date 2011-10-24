@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @userhackrelation.user %>
+</p>
+
+<p>
+  <b>Hack:</b>
+  <%= @userhackrelation.hack %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @userhackrelation.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_userhackrelation_path(@userhackrelation) %> |
+<%= link_to 'Back', userhackrelations_path %>

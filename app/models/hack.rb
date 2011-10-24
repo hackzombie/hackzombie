@@ -7,6 +7,9 @@ class Hack < ActiveRecord::Base
   
   has_many :hackplatformrelations
   has_many :platforms, :through => :hackplatformrelations
+  
+  has_many :userhackrelations
+  has_many :users, :through => :userhackrelations
 
   has_many :hackdescriptionupdates
 

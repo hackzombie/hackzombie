@@ -1,4 +1,6 @@
 Hackzombie::Application.routes.draw do
+  resources :userhackrelations
+
   resources :hackplatformrelations
 
   resources :hackdescriptionupdates
@@ -87,5 +89,7 @@ Hackzombie::Application.routes.draw do
   match 'inviteviaemail' => "invitations#collectionform", :as => :inviteviaemail
   match 'sendinvites' => "invitations#sendinvites", :as => :sendinvites
   match 'accepthackinvite(/:invitecode)' => 'invitations#accept', :as => :accepthackinvite
+  match 'invitationacceptance' => 'invitations#doacceptconfirmation', :as => :invitationacceptance
+  
   
 end

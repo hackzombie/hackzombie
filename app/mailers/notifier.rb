@@ -7,8 +7,7 @@ class Notifier < ActionMailer::Base
     @invitelink = accepthackinvite_url(code)
     @hackname = hackname
     mail(:to =>emailaddress,
-    #mail(:to => "dirk.dekok@xs4all.nl",
-         :subject => "Invited to join a HackYeah team!"
+         :subject => "Invited to join the" +hackname + " HackYeah team!"
     ) do |format|
       format.text
       format.html

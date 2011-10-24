@@ -1,0 +1,18 @@
+<h1>accept</h1>
+
+
+<%= form_for @invitationacceptance do |f| %>
+	
+	<%= f.hidden_field :code %>
+	<div class="field">
+		Hack name: <%=@invitationacceptance.hack.name%>
+	</div>
+<div class="field">
+  <%= f.label :role %>:
+  <%= f.text_field :role %>
+</div>
+
+	<p><%= f.submit "Accept!" %></p>
+	
+	
+<% end %>
