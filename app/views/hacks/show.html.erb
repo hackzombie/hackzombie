@@ -239,34 +239,12 @@
           <div class="scroller">
             <!-- TODO(scotty): hook this up to the db once the team models are done -->
             <ul class="profiles">
+              <% @hack.userhackrelations.each do |relation| %>
               <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
+                <img class="profilephoto" src="http://graph.facebook.com/<%= relation.user.user_tokens.first.uid %>/picture?type=square"/>
+                <div class="profilelabel"><%= relation.role %></div>
               </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
-              <li>
-                <img class="profilephoto" src="http://graph.facebook.com/517267866/picture?type=square"/>
-                <div class="profilelabel">Developer</div>
-              </li>
+              <% end %>
             </ul>
           </div>
         </div>
