@@ -43,18 +43,6 @@
     </div>
 
     <%= yield %>
-
-    <div data-role="footer">
-	     <%= yield :footer %>
-	     <div id="user_nav">
-     	  <% if user_signed_in? %>
-     	    User: <%= current_user.email %>. 
-     	    <%= link_to "Sign out", destroy_user_session_path %>
-     	  <% else %>
-     	   <a href="/users/auth/facebook">Sign in with Facebook</a> 
-     	  <% end %>
-     	</div>
-	</div><!-- /footer -->
 </div>
 </body>
 </html>
