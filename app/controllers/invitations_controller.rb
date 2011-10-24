@@ -82,10 +82,19 @@ class InvitationsController < ApplicationController
     if @invitation.nil?
       logger.info "heu no invitation found..."
     else
-      @invitationacceptance = Invitationacceptance.new
-      @invitationacceptance.id = @invitation.id
-      @invitationacceptance.hack = @invitation.hack
-      @invitationacceptance.code = @invitation.code
+      if current_user.nil?
+        session[:invitecode] = invitecode
+        respond_to do |format|
+          format.html { redirect_to notloggedin_url }
+          format.json { render :json => @platform }
+        end
+      else
+        @invitationacceptance = Invitationacceptance.new
+        @invitationacceptance.id = @invitation.id
+        @invitationacceptance.hack_id = @invitation.hack.id
+        @invitationacceptance.hack = @invitation.hack
+        @invitationacceptance.code = @invitation.code
+      end
     end
   end
   
@@ -97,24 +106,21 @@ class InvitationsController < ApplicationController
     if invitation.nil?
       logger.info "heu no invitation found..."
     else
-      role = @invitationacceptance.role
-      userhackrelation = Userhackrelation.new
-      userhackrelation.user = current_user
-      @hack = invitation.hack
-      userhackrelation.hack = @hack 
-      userhackrelation.role = role
-      userhackrelation.save
-      #respond_to do |format|
-      #  logger.info "bla about to redirect"
-      #  format.html { redirect_to hacks_url, :notice => 'added user to hack.' }
-      #end
-      #respond_to do |format|
-      #  logger.info "bla about to redirec t -- -- we"
-      #  format.html { redirect_to hacks_url }
-      #  logger.info "bla about to redirec t -- -- aaa"
-      #  format.json { head :ok }
-      #  logger.info "bla about to redirec t -- -- bbb"
-      #end
+      if current_user.nil?
+        respond_to do |format|
+          format.html { redirect_to notloggedin_url }
+          format.json { render :json => @platform }
+        end
+      else
+        role = @invitationacceptance.role
+        userhackrelation = Userhackrelation.new
+      
+        userhackrelation.user = current_user
+        @hack = invitation.hack
+        userhackrelation.hack = @hack 
+        userhackrelation.role = role
+        userhackrelation.save
+      end
     end
   end
 

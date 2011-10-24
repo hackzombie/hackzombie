@@ -17,7 +17,7 @@ class Invitationacceptance
   end
 	
 	# testers is an array of ids, newtesters a string of comma separated email addresses
-	attr_accessor :id, :code, :hack_id, :role, :user
+	attr_accessor :id, :code, :hack_id, :hack,:role, :user
 	
 	def initialize(attributes = {})
     Rails.logger.info "initialize, setting attributes and setting InvitationAcceptance id"
