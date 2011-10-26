@@ -19,17 +19,22 @@ end
 
 gem 'jquery-rails'
 
-gem 'sqlite3' 
-gem 'sqlite3-ruby', :require =>'sqlite3'
+group :production do
+  gem 'pg'
+end
+group :development, :test do
+  gem 'sqlite3'
+  gem 'sqlite3-ruby', :require =>'sqlite3'
+end
 
 gem 'rake', '0.9.2'
 gem 'rack-cache', '1.0.3'
 
-gem "rspec-rails"
-
+# Use thin as the web server
+gem 'thin'
 
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
